@@ -1,11 +1,11 @@
-# 🚚 TaskLogix — Decentralized Logistics & Task Marketplace
+# 🚚 TaskMe — Decentralized Logistics & Task Marketplace
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![EVM Compatible](https://img.shields.io/badge/EVM-Compatible-blue)
 ![Built with Foundry](https://img.shields.io/badge/Built%20with-Foundry-orange)
 ![Powered by Base](https://img.shields.io/badge/Powered%20by-Base%20Network-0052FF)
 
-> **TaskLogix** is a decentralized marketplace where verified individuals complete physical tasks (deliveries, errands, etc.) for others — powered by blockchain verification, escrow payments, and on-chain reputation.  
+> **TaskMe** is a decentralized marketplace where verified individuals complete physical tasks (deliveries, errands, etc.) for others — powered by blockchain verification, escrow payments, and on-chain reputation.  
 > Think of it as **“Bolt for Tasks”** — starting where traditional logistics stops.
 
 ---
@@ -20,7 +20,7 @@ Enable people to request and complete real-world tasks (deliver flowers, pick up
 
 ```
 
-tasklogix/
+taskme/
 ├── frontend/         # React app for users & taskers
 ├── backend/          # Java or Node.js backend (off-chain ops)
 ├── smart-contract/   # Foundry Solidity contracts (on-chain logic)
