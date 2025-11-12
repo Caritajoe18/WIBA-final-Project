@@ -23,7 +23,7 @@ interface UserAttributes {
     isEmailVerified: boolean;
     emailVerificationToken?: string;
     emailVerificationExpires?: Date | null;
-    kycStatus: KYCStatus;
+    kycStatus?: KYCStatus;
     kycHash?: string;
     didRecord?: string;
     firstName?: string;
@@ -31,7 +31,7 @@ interface UserAttributes {
     phoneNumber?: string;
     profileImage?: string;
     reputationScore: number;
-    isActive: boolean;
+    isActive?: boolean;
     createdAt?: Date;
     updatedAt?: Date;
 }
@@ -39,26 +39,26 @@ interface UserAttributes {
 interface UserCreationAttributes extends Optional<UserAttributes, 'id' | 'isEmailVerified' | 'kycStatus' | 'reputationScore' | 'isActive'> { }
 
 class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
-    public id!: string;
-    public email!: string;
-    public password!: string;
-    public role!: UserRole;
-    public walletAddress?: string;
-    public isEmailVerified!: boolean;
-    public emailVerificationToken?: string;
-    public emailVerificationExpires?: Date | null;
-    public kycStatus!: KYCStatus;
-    public kycHash?: string;
-    public didRecord?: string;
-    public firstName?: string;
-    public lastName?: string;
-    public phoneNumber?: string;
-    public profileImage?: string;
-    public reputationScore!: number;
-    public isActive!: boolean;
+    declare id: string;
+    declare email: string;
+    declare password: string;
+    declare role: UserRole;
+    declare walletAddress?: string;
+    declare isEmailVerified: boolean;
+    declare emailVerificationToken?: string;
+    declare emailVerificationExpires?: Date | null;
+    declare kycStatus: KYCStatus;
+    declare kycHash?: string;
+    declare didRecord?: string;
+    declare firstName?: string;
+    declare lastName?: string;
+    declare phoneNumber?: string;
+    declare profileImage?: string;
+    declare reputationScore: number;
+    declare isActive?: boolean;
 
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+    declare createdAt?: Date;
+    declare  updatedAt?: Date;
 }
 
 User.init(

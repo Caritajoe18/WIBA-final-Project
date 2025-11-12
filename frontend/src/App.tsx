@@ -5,6 +5,7 @@ import { config } from './config/wagmi';
 import { Toaster } from './components/ui/toaster';
 import Welcome from './pages/Welcome';
 import ProfileSetup from './pages/ProfileSetup';
+import CreateProfile from './pages/CreateProfile';
 import TaskerRegistration from './pages/TaskerRegistration';
 import Home from './pages/Home';
 import Register from './pages/Register';
@@ -22,6 +23,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/profile-setup" element={<ProfileSetup />} />
+            <Route path="/create-profile" element={<CreateProfile />} />
             <Route path="/tasker-registration" element={<TaskerRegistration />} />
             <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />

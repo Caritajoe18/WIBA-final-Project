@@ -68,8 +68,8 @@ const ProfileSetup = () => {
                   <Wallet className="w-4 h-4" />
                   <span>Wallet required to create tasks</span>
                 </div>
-                <Button 
-                  onClick={() => navigate("/home")}
+                <Button
+                  onClick={() => navigate("/create-profile?role=REQUESTER")}
                   className="w-full"
                   size="lg"
                 >
@@ -123,15 +123,15 @@ const ProfileSetup = () => {
                   <UserCheck className="w-4 h-4" />
                   <span>KYC verification required to accept tasks</span>
                 </div>
-                <Button 
-                  onClick={() => navigate("/tasker-registration")}
+                <Button
+                  onClick={() => navigate("/create-profile?role=TASKER")}
                   variant="default"
                   className="w-full bg-accent hover:bg-accent/90"
                   size="lg"
                 >
                   Register as Tasker
                 </Button>
-                <Button 
+                <Button
                   onClick={() => navigate("/home")}
                   variant="outline"
                   className="w-full"

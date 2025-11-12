@@ -20,6 +20,7 @@ export interface ApiResponse<T = any> {
     data?: T;
     token?: string;
     user?: any;
+    userId?: string;
 }
 
 class ApiClient {

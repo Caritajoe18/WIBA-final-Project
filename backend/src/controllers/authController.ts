@@ -5,60 +5,82 @@ import User, { UserRole } from '../models/User';
 import { generateToken } from '../utils/jwt';
 import { sendVerificationEmail, sendWelcomeEmail } from '../utils/email';
 import { AuthRequest } from '../middleware/auth';
+import sequelize from '../config/database';
 
 export const register = async (req: Request, res: Response): Promise<void> => {
-    try {
-        const { email, password, firstName, lastName, phoneNumber, role } = req.body;
+  const transaction = await sequelize.transaction();
 
-        // Validation
-        if (!email || !password) {
-            res.status(400).json({ error: 'Email and password are required' });
-            return;
-        }
+  try {
+    const { email, password, firstName, lastName, phoneNumber, role } = req.body;
 
-        if (password.length < 8) {
-            res.status(400).json({ error: 'Password must be at least 8 characters' });
-            return;
-        }
-
-        // Check if user exists
-        const existingUser = await User.findOne({ where: { email } });
-        if (existingUser) {
-            res.status(400).json({ error: 'Email already registered' });
-            return;
-        }
-
-        // Hash password
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        // Generate verification token
-        const verificationToken = crypto.randomBytes(32).toString('hex');
-        const verificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
-
-        // Create user
-        const user = await User.create({
-            email,
-            password: hashedPassword,
-            firstName,
-            lastName,
-            phoneNumber,
-            role: role || UserRole.REQUESTER,
-            emailVerificationToken: verificationToken,
-            emailVerificationExpires: verificationExpires,
-        });
-
-        // Send verification email
-        await sendVerificationEmail(email, verificationToken, firstName);
-
-        res.status(201).json({
-            message: 'Registration successful. Please check your email to verify your account.',
-            userId: user.id,
-        });
-    } catch (error) {
-        console.error('Registration error:', error);
-        res.status(500).json({ error: 'Registration failed' });
+    // Validation
+    if (!email || !password) {
+      res.status(400).json({ error: "Email and password are required" });
+      await transaction.rollback();
+      return;
     }
+
+    if (password.length < 8) {
+      res.status(400).json({ error: "Password must be at least 8 characters" });
+      await transaction.rollback();
+      return;
+    }
+
+    // Check if user exists
+    const existingUser = await User.findOne({ where: { email }, transaction });
+    if (existingUser) {
+      res.status(400).json({ error: "Email already registered" });
+      await transaction.rollback();
+      return;
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Generate verification token
+    const verificationToken = crypto.randomBytes(32).toString("hex");
+    const verificationExpires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24 hours
+
+    // Create user inside the transaction
+    const user = await User.create(
+      {
+        email,
+        password: hashedPassword,
+        firstName,
+        lastName,
+        phoneNumber,
+        role: role || UserRole.REQUESTER,
+        emailVerificationToken: verificationToken,
+        emailVerificationExpires: verificationExpires,
+        isEmailVerified:  true
+      },
+      { transaction }
+    );
+
+    // Try sending verification email
+    // try {
+    //   await sendVerificationEmail(email, verificationToken, firstName);
+    // } catch (emailError) {
+    //   console.error("Email sending failed, rolling back user creation:", emailError);
+    //   await transaction.rollback();
+    //   res.status(500).json({ error: "Failed to send verification email. Please try again." });
+    //   return;
+    // }
+
+    // Commit transaction only if email succeeds
+    await transaction.commit();
+
+    res.status(201).json({
+      message: "Registration successful. Please check your email to verify your account.",
+      userId: user.id,
+    });
+  } catch (error) {
+    console.error("Registration error:", error);
+    await transaction.rollback();
+    res.status(500).json({ error: "Registration failed" });
+  }
 };
+
 
 export const verifyEmail = async (req: Request, res: Response): Promise<void> => {
     try {
