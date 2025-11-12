@@ -87,8 +87,8 @@ export const verifyEmail = async (req: Request, res: Response): Promise<void> =>
 
         // Update user
         user.isEmailVerified = true;
-        user.emailVerificationToken = undefined;
-        user.emailVerificationExpires = undefined;
+        user.emailVerificationToken = "";
+        user.emailVerificationExpires = null;
         await user.save();
 
         // Send welcome email

@@ -56,7 +56,6 @@ module.exports = {
             evidence: {
                 type: Sequelize.TEXT,
                 allowNull: true,
-                comment: 'JSON array of evidence URLs',
             },
             resolution_tx_hash: {
                 type: Sequelize.STRING(255),

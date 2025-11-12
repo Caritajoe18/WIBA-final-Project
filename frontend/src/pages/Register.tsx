@@ -1,37 +1,49 @@
 import { Link } from 'react-router-dom';
 import { RegisterForm } from '@/components/auth/RegisterForm';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
+import { ArrowLeft } from 'lucide-react';
 
 export default function Register() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-4">
-            <Card className="w-full max-w-md">
-                <CardHeader className="space-y-1">
-                    <div className="text-4xl text-center mb-2">🚚</div>
-                    <CardTitle className="text-2xl text-center">Create Account</CardTitle>
-                    <CardDescription className="text-center">
+        <div className="min-h-screen bg-background">
+            {/* Header */}
+            <header className="bg-card border-b border-border sticky top-0 z-10 shadow-sm">
+                <div className="max-w-lg mx-auto px-4 py-4">
+                    <div className="flex items-center gap-3">
+                        <Link to="/" className="text-muted-foreground hover:text-foreground">
+                            <ArrowLeft className="w-5 h-5" />
+                        </Link>
+                        <h1 className="text-2xl font-bold text-foreground">DropIt</h1>
+                    </div>
+                </div>
+            </header>
+
+            {/* Hero Section */}
+            <div className="bg-primary text-primary-foreground shadow-sm">
+                <div className="max-w-lg mx-auto px-4 py-8 text-center">
+                    <div className="text-6xl mb-4">🚚</div>
+                    <h2 className="text-2xl font-bold mb-2">Create Account</h2>
+                    <p className="text-sm opacity-90">
                         Join DropIt - Decentralized Logistics Marketplace
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
+                    </p>
+                </div>
+            </div>
+
+            {/* Registration Form */}
+            <div className="max-w-lg mx-auto px-4 py-6">
+                <div className="bg-card rounded-xl border border-border shadow-sm p-6">
                     <RegisterForm />
-                </CardContent>
-                <CardFooter className="flex flex-col space-y-2">
-                    <div className="text-sm text-center text-muted-foreground">
+                </div>
+
+                {/* Footer */}
+                <div className="mt-6 text-center">
+                    <p className="text-sm text-muted-foreground">
                         Already have an account?{' '}
-                        <Link to="/login" className="text-primary hover:underline">
+                        <Link to="/login" className="text-primary hover:underline font-medium">
                             Login
                         </Link>
-                    </div>
-                </CardFooter>
-            </Card>
+                    </p>
+                </div>
+            </div>
         </div>
     );
 }

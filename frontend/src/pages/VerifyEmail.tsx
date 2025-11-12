@@ -1,15 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useSearchParams, useNavigate } from 'react-router-dom';
+import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { api } from '@/lib/api';
 import { Button } from '@/components/ui/button';
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card';
-import { Loader2, CheckCircle, XCircle } from 'lucide-react';
+import { Loader2, CheckCircle, XCircle, ArrowLeft } from 'lucide-react';
 
 export default function VerifyEmail() {
     const [searchParams] = useSearchParams();
@@ -45,49 +38,84 @@ export default function VerifyEmail() {
     };
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-purple-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-4">
-            <Card className="w-full max-w-md">
-                <CardHeader className="space-y-1">
-                    <div className="text-center">
-                        {status === 'loading' && (
-                            <Loader2 className="h-16 w-16 mx-auto animate-spin text-primary" />
-                        )}
-                        {status === 'success' && (
-                            <CheckCircle className="h-16 w-16 mx-auto text-green-500" />
-                        )}
-                        {status === 'error' && (
-                            <XCircle className="h-16 w-16 mx-auto text-red-500" />
-                        )}
+        <div className="min-h-screen bg-background">
+            {/* Header */}
+            <header className="bg-card border-b border-border sticky top-0 z-10 shadow-sm">
+                <div className="max-w-lg mx-auto px-4 py-4">
+                    <div className="flex items-center gap-3">
+                        <Link to="/" className="text-muted-foreground hover:text-foreground">
+                            <ArrowLeft className="w-5 h-5" />
+                        </Link>
+                        <h1 className="text-2xl font-bold text-foreground">DropIt</h1>
                     </div>
-                    <CardTitle className="text-2xl text-center">
-                        {status === 'loading' && 'Verifying Email...'}
-                        {status === 'success' && 'Email Verified! 🎉'}
-                        {status === 'error' && 'Verification Failed'}
-                    </CardTitle>
-                    <CardDescription className="text-center">
-                        {message}
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
-                    {status === 'success' && (
-                        <div className="text-center space-y-4">
-                            <p className="text-sm text-muted-foreground">
-                                Redirecting to dashboard...
+                </div>
+            </header>
+
+            {/* Content */}
+            <div className="max-w-lg mx-auto px-4 py-12">
+                <div className="bg-card rounded-xl border border-border shadow-sm p-8">
+                    <div className="text-center space-y-6">
+                        {/* Icon */}
+                        <div className="flex justify-center">
+                            {status === 'loading' && (
+                                <Loader2 className="h-16 w-16 animate-spin text-primary" />
+                            )}
+                            {status === 'success' && (
+                                <div className="h-16 w-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center">
+                                    <CheckCircle className="h-10 w-10 text-green-600 dark:text-green-400" />
+                                </div>
+                            )}
+                            {status === 'error' && (
+                                <div className="h-16 w-16 bg-red-100 dark:bg-red-900/20 rounded-full flex items-center justify-center">
+                                    <XCircle className="h-10 w-10 text-red-600 dark:text-red-400" />
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Title */}
+                        <div>
+                            <h2 className="text-2xl font-bold text-foreground mb-2">
+                                {status === 'loading' && 'Verifying Email...'}
+                                {status === 'success' && 'Email Verified! 🎉'}
+                                {status === 'error' && 'Verification Failed'}
+                            </h2>
+                            <p className="text-muted-foreground">
+                                {message}
                             </p>
                         </div>
-                    )}
-                    {status === 'error' && (
-                        <div className="space-y-4">
-                            <Button
-                                onClick={() => navigate('/login')}
-                                className="w-full"
-                            >
-                                Go to Login
-                            </Button>
-                        </div>
-                    )}
-                </CardContent>
-            </Card>
+
+                        {/* Actions */}
+                        {status === 'success' && (
+                            <div className="pt-4">
+                                <p className="text-sm text-muted-foreground mb-4">
+                                    Redirecting to dashboard...
+                                </p>
+                                <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+                                    <div className="bg-primary h-full animate-pulse" style={{ width: '100%' }} />
+                                </div>
+                            </div>
+                        )}
+
+                        {status === 'error' && (
+                            <div className="space-y-3 pt-4">
+                                <Button
+                                    onClick={() => navigate('/login')}
+                                    className="w-full"
+                                >
+                                    Go to Login
+                                </Button>
+                                <Button
+                                    onClick={() => navigate('/register')}
+                                    variant="outline"
+                                    className="w-full"
+                                >
+                                    Register New Account
+                                </Button>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </div>
         </div>
     );
 }

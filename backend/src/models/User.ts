@@ -22,7 +22,7 @@ interface UserAttributes {
     walletAddress?: string;
     isEmailVerified: boolean;
     emailVerificationToken?: string;
-    emailVerificationExpires?: Date;
+    emailVerificationExpires?: Date | null;
     kycStatus: KYCStatus;
     kycHash?: string;
     didRecord?: string;
@@ -46,7 +46,7 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
     public walletAddress?: string;
     public isEmailVerified!: boolean;
     public emailVerificationToken?: string;
-    public emailVerificationExpires?: Date;
+    public emailVerificationExpires?: Date | null;
     public kycStatus!: KYCStatus;
     public kycHash?: string;
     public didRecord?: string;

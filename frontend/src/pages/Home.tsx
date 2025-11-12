@@ -62,12 +62,16 @@ const Home = () => {
         <div className="max-w-lg mx-auto px-4 py-4">
           <div className="flex items-center justify-between mb-4">
             <h1 className="text-2xl font-bold text-foreground">DropIt</h1>
-            <Button variant="outline" size="sm">
-              <Filter className="w-4 h-4 mr-2" />
-              Filters
-            </Button>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" onClick={() => navigate('/login')}>
+                Login
+              </Button>
+              <Button size="sm" onClick={() => navigate('/register')}>
+                Sign Up
+              </Button>
+            </div>
           </div>
-          
+
           <div className="relative">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-muted-foreground" />
             <Input
@@ -155,7 +159,7 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="text-right">
                   <div className="text-2xl font-bold text-accent">${task.price}</div>
                   <div className="text-xs text-muted-foreground">USDC</div>

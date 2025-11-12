@@ -14,9 +14,6 @@ module.exports = {
                 type: Sequelize.STRING(255),
                 allowNull: false,
                 unique: true,
-                validate: {
-                    isEmail: true,
-                },
             },
             password: {
                 type: Sequelize.STRING(255),

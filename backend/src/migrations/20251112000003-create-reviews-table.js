@@ -55,7 +55,6 @@ module.exports = {
             review_hash: {
                 type: Sequelize.STRING(255),
                 allowNull: true,
-                comment: 'On-chain hash of the review',
             },
             created_at: {
                 type: Sequelize.DATE,

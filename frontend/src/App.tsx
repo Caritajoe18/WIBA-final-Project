@@ -1,8 +1,12 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { config } from './config/wagmi';
 import { Toaster } from './components/ui/toaster';
+import Welcome from './pages/Welcome';
+import ProfileSetup from './pages/ProfileSetup';
+import TaskerRegistration from './pages/TaskerRegistration';
+import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import VerifyEmail from './pages/VerifyEmail';
@@ -16,7 +20,10 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/register" replace />} />
+            <Route path="/" element={<Welcome />} />
+            <Route path="/profile-setup" element={<ProfileSetup />} />
+            <Route path="/tasker-registration" element={<TaskerRegistration />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
             <Route path="/verify-email" element={<VerifyEmail />} />
