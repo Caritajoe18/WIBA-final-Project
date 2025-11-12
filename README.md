@@ -1,11 +1,11 @@
-# 🚚 Dropit — Decentralized Logistics & Task Marketplace
+# 🚚 DropIt — Decentralized Logistics & Task Marketplace
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![EVM Compatible](https://img.shields.io/badge/EVM-Compatible-blue)
 ![Built with Foundry](https://img.shields.io/badge/Built%20with-Foundry-orange)
 ![Powered by Base](https://img.shields.io/badge/Powered%20by-Base%20Network-0052FF)
 
-> **TaskMe** is a decentralized marketplace where verified individuals complete physical tasks (deliveries, errands, etc.) for others — powered by blockchain verification, escrow payments, and on-chain reputation.  
+> **DropIt** is a decentralized marketplace where verified individuals complete physical tasks (deliveries, errands, etc.) for others — powered by blockchain verification, escrow payments, and on-chain reputation.  
 > Think of it as **“Uber for Tasks”** — starting where traditional logistics stops.
 
 ---
