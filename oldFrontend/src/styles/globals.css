@@ -2,6 +2,24 @@
 
 :root {
   --font-size: 16px;
+  --text-xs: calc(var(--font-size) * 0.75);
+  /* 12px */
+  --text-sm: calc(var(--font-size) * 0.875);
+  /* 14px */
+  --text-base: var(--font-size);
+  /* 16px */
+  --text-lg: calc(var(--font-size) * 1.125);
+  /* 18px */
+  --text-xl: calc(var(--font-size) * 1.25);
+  /* 20px */
+  --text-2xl: calc(var(--font-size) * 1.5);
+  /* 24px */
+  --text-3xl: calc(var(--font-size) * 1.875);
+  /* 30px */
+  --text-4xl: calc(var(--font-size) * 2.25);
+  /* 36px */
+  --text-5xl: calc(var(--font-size) * 3);
+  /* 48px */
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -183,6 +201,35 @@
     }
   }
 }
+
+/* Medium screens - tablets */
+@media (min-width: 768px) {
+  :root {
+    --font-size: 18px;
+  }
+}
+
+/* Large screens - laptops/desktops */
+@media (min-width: 1024px) {
+  :root {
+    --font-size: 20px;
+  }
+}
+
+/* Extra large screens */
+@media (min-width: 1280px) {
+  :root {
+    --font-size: 22px;
+  }
+}
+
+/* 2XL screens */
+@media (min-width: 1536px) {
+  :root {
+    --font-size: 24px;
+  }
+}
+
 
 html {
   font-size: var(--font-size);
