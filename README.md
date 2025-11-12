@@ -1,4 +1,4 @@
-# 🚚 TaskMe — Decentralized Logistics & Task Marketplace
+# 🚚 Dropit — Decentralized Logistics & Task Marketplace
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 ![EVM Compatible](https://img.shields.io/badge/EVM-Compatible-blue)
@@ -6,7 +6,7 @@
 ![Powered by Base](https://img.shields.io/badge/Powered%20by-Base%20Network-0052FF)
 
 > **TaskMe** is a decentralized marketplace where verified individuals complete physical tasks (deliveries, errands, etc.) for others — powered by blockchain verification, escrow payments, and on-chain reputation.  
-> Think of it as **“Bolt for Tasks”** — starting where traditional logistics stops.
+> Think of it as **“Uber for Tasks”** — starting where traditional logistics stops.
 
 ---
 
@@ -20,7 +20,7 @@ Enable people to request and complete real-world tasks (deliver flowers, pick up
 
 ```
 
-taskme/
+dropit/
 ├── frontend/         # React app for users & taskers
 ├── backend/          # Java or Node.js backend (off-chain ops)
 ├── smart-contract/   # Foundry Solidity contracts (on-chain logic)
@@ -201,9 +201,9 @@ Open [http://localhost:3000](http://localhost:3000) and connect via MetaMask or 
 
 | Name    | Role                     | GitHub                                       |
 | ------- | ------------------------ | -------------------------------------------- |
-| **Proper-Progress** | Mentor | [@](https://github.com/) |
+| **Proper-Progress** | Mentor | [@Properprogress1](https://github.com/Properprogress1) |
 | **Carita**     | Developer |    [@caritajoe18](https://github.com/Caritajoe18) |                                      |
-| **Confidence**      | Developer        |                                              |
+| **Confidence**      | Developer        | [@xceptionalbae23](https://github.com/xceptionalbae23)                                              |
 
 
 ---
